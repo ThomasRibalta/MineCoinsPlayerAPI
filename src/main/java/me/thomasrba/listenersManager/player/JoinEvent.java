@@ -33,7 +33,7 @@ public class JoinEvent implements Listener {
             preparedStatement.setString(1,uuid.toString());
             final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()){
-                ev.getPlayer().sendMessage("Tu es deja dans nos donné hahahahaha");
+                this.main.playerManagers.addPlayerState(ev.getPlayer().getUniqueId());
             }else{
                 this.addUserDataBase(connection, uuid);
             }
