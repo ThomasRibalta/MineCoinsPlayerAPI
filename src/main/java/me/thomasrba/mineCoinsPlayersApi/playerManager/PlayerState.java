@@ -1,7 +1,6 @@
-package me.thomasrba.playerManager;
+package me.thomasrba.mineCoinsPlayersApi.playerManager;
 
-import me.thomasrba.Main;
-import org.bukkit.Bukkit;
+import me.thomasrba.mineCoinsPlayersApi.MineCoinsPlayersAPI;
 import org.bukkit.entity.Player;
 
 import java.sql.Connection;
@@ -11,7 +10,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class PlayerState {
-    private final Main main;
+    private final MineCoinsPlayersAPI main;
     private final UUID uuid;
     private final String psuedo;
     private final Player player;
@@ -19,7 +18,7 @@ public class PlayerState {
     private int PlayerRank_id;
     private int boutique_pts;
 
-    public PlayerState(Main main, UUID uuid, Player p) {
+    public PlayerState(MineCoinsPlayersAPI main, UUID uuid, Player p) {
         this.main = main;
         this.uuid = uuid;
         this.psuedo = p.getName();

@@ -1,15 +1,15 @@
-package me.thomasrba.listenersManager.player;
+package me.thomasrba.mineCoinsPlayersApi.listenersManager.player;
 
-import me.thomasrba.Main;
+import me.thomasrba.mineCoinsPlayersApi.MineCoinsPlayersAPI;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 public class QuitEvent implements Listener {
 
-    Main main;
+    MineCoinsPlayersAPI main;
 
-    public QuitEvent(Main main){
+    public QuitEvent(MineCoinsPlayersAPI main){
         this.main = main;
     }
 

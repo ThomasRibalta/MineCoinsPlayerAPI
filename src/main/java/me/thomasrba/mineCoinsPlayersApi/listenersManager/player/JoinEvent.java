@@ -1,12 +1,11 @@
-package me.thomasrba.listenersManager.player;
+package me.thomasrba.mineCoinsPlayersApi.listenersManager.player;
 
-import me.thomasrba.DataBaseManager.DataBaseConnection;
-import me.thomasrba.Main;
+import me.thomasrba.mineCoinsPlayersApi.DataBaseManager.DataBaseConnection;
+import me.thomasrba.mineCoinsPlayersApi.MineCoinsPlayersAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.plugin.Plugin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,8 +16,8 @@ import java.util.UUID;
 
 public class JoinEvent implements Listener {
 
-    Main main;
-    public JoinEvent(Main main) {
+    MineCoinsPlayersAPI main;
+    public JoinEvent(MineCoinsPlayersAPI main) {
         this.main = main;
     }
 

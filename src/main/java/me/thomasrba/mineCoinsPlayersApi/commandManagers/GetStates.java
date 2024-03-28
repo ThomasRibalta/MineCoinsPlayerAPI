@@ -1,15 +1,15 @@
-package me.thomasrba.commandManagers;
+package me.thomasrba.mineCoinsPlayersApi.commandManagers;
 
-import me.thomasrba.Main;
-import me.thomasrba.playerManager.PlayerState;
+import me.thomasrba.mineCoinsPlayersApi.MineCoinsPlayersAPI;
+import me.thomasrba.mineCoinsPlayersApi.playerManager.PlayerState;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 public class GetStates implements CommandExecutor {
 
-    Main main;
-    public GetStates(Main main){
+    MineCoinsPlayersAPI main;
+    public GetStates(MineCoinsPlayersAPI main){
         this.main = main;
     }
     @Override

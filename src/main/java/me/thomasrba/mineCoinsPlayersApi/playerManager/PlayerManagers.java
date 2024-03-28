@@ -1,6 +1,6 @@
-package me.thomasrba.playerManager;
+package me.thomasrba.mineCoinsPlayersApi.playerManager;
 
-import me.thomasrba.Main;
+import me.thomasrba.mineCoinsPlayersApi.MineCoinsPlayersAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -10,10 +10,11 @@ import java.util.UUID;
 
 public class PlayerManagers {
 
-    Main main;
+    MineCoinsPlayersAPI main;
 
     public final HashMap<UUID, PlayerState> PlayerStates = new HashMap<UUID, PlayerState>();
-    public PlayerManagers(Main main) {
+
+    public PlayerManagers(MineCoinsPlayersAPI main) {
         this.main = main;
         loadOnlinePLayer();
     }
@@ -31,5 +32,9 @@ public class PlayerManagers {
         {
             addPlayerState(p.getUniqueId());
         }
+    }
+
+    public HashMap<UUID, PlayerState> getPlayerStates() {
+        return PlayerStates;
     }
 }

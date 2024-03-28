@@ -1,4 +1,4 @@
-package me.thomasrba.DataBaseManager;
+package me.thomasrba.mineCoinsPlayersApi.DataBaseManager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

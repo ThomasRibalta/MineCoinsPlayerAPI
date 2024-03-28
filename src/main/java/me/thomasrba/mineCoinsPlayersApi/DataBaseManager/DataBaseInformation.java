@@ -1,4 +1,4 @@
-package me.thomasrba.DataBaseManager;
+package me.thomasrba.mineCoinsPlayersApi.DataBaseManager;
 
 public class DataBaseInformation {
     private String host;

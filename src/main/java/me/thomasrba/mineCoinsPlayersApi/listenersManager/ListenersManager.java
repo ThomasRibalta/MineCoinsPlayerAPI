@@ -1,15 +1,15 @@
-package me.thomasrba.listenersManager;
+package me.thomasrba.mineCoinsPlayersApi.listenersManager;
 
-import me.thomasrba.Main;
-import me.thomasrba.listenersManager.player.JoinEvent;
+import me.thomasrba.mineCoinsPlayersApi.MineCoinsPlayersAPI;
+import me.thomasrba.mineCoinsPlayersApi.listenersManager.player.JoinEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 
 public class ListenersManager {
 
-    public Main main;
+    public MineCoinsPlayersAPI main;
     public PluginManager pluginManager;
-    public ListenersManager(Main main) {
+    public ListenersManager(MineCoinsPlayersAPI main) {
         this.main = main;
         this.pluginManager = Bukkit.getPluginManager();
     }
