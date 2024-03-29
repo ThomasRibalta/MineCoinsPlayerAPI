@@ -33,6 +33,7 @@ public class JoinEvent implements Listener {
             if (resultSet.next()){
                 this.mineCoinsPlayersAPI.playerManagers.addPlayerState(ev.getPlayer().getUniqueId());
                 ev.setJoinMessage("§7[§a+§7]§a" + ev.getPlayer().getName());
+                ev.getPlayer();
             }else{
                 this.addUserDataBase(connection, uuid);
             }

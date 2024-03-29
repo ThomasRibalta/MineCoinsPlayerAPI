@@ -2,11 +2,13 @@ package me.thomasrba.minecoinsplayersapi.playermanager;
 
 import me.thomasrba.minecoinsplayersapi.MineCoinsPlayersAPI;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.UUID;
 
 public class PlayerState {
@@ -18,13 +20,17 @@ public class PlayerState {
     private int gradeId;
     private int boutiquePts;
 
+    private final PermissionAttachment permissionAttachment;
+
     public PlayerState(MineCoinsPlayersAPI main, UUID uuid, Player p) {
         this.main = main;
         this.uuid = uuid;
         this.psuedo = p.getName();
         this.player = p;
-
+        this.permissionAttachment = this.player.addAttachment(this.main);
         this.getSQLInformation(uuid);
+        this.addPlayerPermission(PlayerRank.getRankMap(this.gradeId).getGradePermissions());
+
 
     }
 
@@ -57,6 +63,13 @@ public class PlayerState {
             preparedStatement.close();
         }catch (SQLException e){
             e.printStackTrace();
+        }
+    }
+
+    public void addPlayerPermission(List<String> gradePermission){
+        for (String permission : gradePermission) {
+            System.out.println(permission);
+            this.permissionAttachment.setPermission(permission, true);
         }
     }
 
