@@ -73,6 +73,13 @@ public class PlayerState {
         }
     }
 
+    public void removePlayerPermission(List<String> gradePermission){
+        for (String permission : gradePermission) {
+            System.out.println(permission);
+            this.permissionAttachment.unsetPermission(permission);
+        }
+    }
+
     public UUID getUuid() {
         return uuid;
     }
@@ -98,6 +105,8 @@ public class PlayerState {
     }
 
     public void setGradeId(int gradeId) {
+        this.removePlayerPermission(PlayerRank.getRankMap(this.gradeId).getGradePermissions());
         this.gradeId = gradeId;
+        this.addPlayerPermission(PlayerRank.getRankMap(this.gradeId).getGradePermissions());
     }
 }

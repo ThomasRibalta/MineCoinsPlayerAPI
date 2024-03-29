@@ -28,7 +28,6 @@ public class SetRank implements CommandExecutor {
             return false;
         }
         this.mineCoinsPlayersAPI.playerManagers.playerStates.get(player.getUniqueId()).setGradeId(Integer.parseInt(strings[1]));
-        player.sendMessage("Votre rank change");
         return true;
     }
 }

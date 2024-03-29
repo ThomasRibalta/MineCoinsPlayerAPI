@@ -5,8 +5,13 @@ import java.util.List;
 
 public enum PlayerRank {
 
-    Mineur(1, "§8[Mineur]", List.of("test.test")),
-    Admin(2,"§c[Administrateur]", List.of());
+    Mineur(1, "§7[Mineur]", List.of("test.test")),
+    VIP(2, "§b[VIP]", List.of("admin.setrank")),
+    VIPPLUS(3, "§b[VIP§e+§b]", List.of("test.test")),
+    Youtubeurs(4, "§c[Youtubeur]", List.of("test.test")),
+    Moderateur(6, "§2[Moderateur]", List.of("test.test")),
+    Builder(5, "§6[Builder]", List.of("test.test")),
+    Admin(7,"§4[Administrateur]", List.of());
 
     private final int gradeId;
     private final String prefix;
@@ -33,10 +38,6 @@ public enum PlayerRank {
 
     public String getPrefix() {
         return prefix;
-    }
-
-    public String getPrefixById(int gradeId) {
-        return rankMap.get(gradeId).getPrefix();
     }
 
     public List<String> getGradePermissions() {
