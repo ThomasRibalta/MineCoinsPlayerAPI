@@ -1,7 +1,7 @@
-package me.thomasrba.mineCoinsPlayersApi.listenersManager.player;
+package me.thomasrba.minecoinsplayersapi.listenersmanager.player;
 
-import me.thomasrba.mineCoinsPlayersApi.DataBaseManager.DataBaseConnection;
-import me.thomasrba.mineCoinsPlayersApi.MineCoinsPlayersAPI;
+import me.thomasrba.minecoinsplayersapi.databasemanager.DataBaseConnection;
+import me.thomasrba.minecoinsplayersapi.MineCoinsPlayersAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -16,23 +16,23 @@ import java.util.UUID;
 
 public class JoinEvent implements Listener {
 
-    MineCoinsPlayersAPI main;
+    MineCoinsPlayersAPI mineCoinsPlayersAPI;
     public JoinEvent(MineCoinsPlayersAPI main) {
-        this.main = main;
+        this.mineCoinsPlayersAPI = main;
     }
 
     @EventHandler
     public void playerJoinEvent(PlayerJoinEvent ev){
-        ev.setJoinMessage("+ 1");
         final UUID uuid = ev.getPlayer().getUniqueId();
-        final DataBaseConnection dataBaseConnection = this.main.getDataBaseManagers().getDataBaseConnection();
+        final DataBaseConnection dataBaseConnection = this.mineCoinsPlayersAPI.getDataBaseManagers().getDataBaseConnection();
         try{
             final Connection connection = dataBaseConnection.getConnection();
             final PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Players WHERE uuid = ?");
             preparedStatement.setString(1,uuid.toString());
             final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()){
-                this.main.playerManagers.addPlayerState(ev.getPlayer().getUniqueId());
+                this.mineCoinsPlayersAPI.playerManagers.addPlayerState(ev.getPlayer().getUniqueId());
+                ev.setJoinMessage("§7[§a+§7]§a" + ev.getPlayer().getName());
             }else{
                 this.addUserDataBase(connection, uuid);
             }

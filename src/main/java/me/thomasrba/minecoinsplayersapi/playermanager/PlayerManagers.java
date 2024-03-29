@@ -1,6 +1,6 @@
-package me.thomasrba.mineCoinsPlayersApi.playerManager;
+package me.thomasrba.minecoinsplayersapi.playermanager;
 
-import me.thomasrba.mineCoinsPlayersApi.MineCoinsPlayersAPI;
+import me.thomasrba.minecoinsplayersapi.MineCoinsPlayersAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -10,21 +10,21 @@ import java.util.UUID;
 
 public class PlayerManagers {
 
-    MineCoinsPlayersAPI main;
+    MineCoinsPlayersAPI mineCoinsPlayersAPI;
 
-    public final HashMap<UUID, PlayerState> PlayerStates = new HashMap<UUID, PlayerState>();
+    public final HashMap<UUID, PlayerState> playerStates = new HashMap<UUID, PlayerState>();
 
     public PlayerManagers(MineCoinsPlayersAPI main) {
-        this.main = main;
+        this.mineCoinsPlayersAPI = main;
         loadOnlinePLayer();
     }
 
     public void addPlayerState(UUID uuid){
-        PlayerStates.put(uuid, new PlayerState(this.main, uuid, Objects.requireNonNull(Bukkit.getPlayer(uuid))));
+        playerStates.put(uuid, new PlayerState(this.mineCoinsPlayersAPI, uuid, Objects.requireNonNull(Bukkit.getPlayer(uuid))));
     }
 
     public void removePlayerState(UUID uuid){
-        PlayerStates.remove(uuid);
+        playerStates.remove(uuid);
     }
 
     private void loadOnlinePLayer(){
@@ -35,6 +35,6 @@ public class PlayerManagers {
     }
 
     public HashMap<UUID, PlayerState> getPlayerStates() {
-        return PlayerStates;
+        return playerStates;
     }
 }

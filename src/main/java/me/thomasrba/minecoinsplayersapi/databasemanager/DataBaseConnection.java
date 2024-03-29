@@ -1,4 +1,4 @@
-package me.thomasrba.mineCoinsPlayersApi.DataBaseManager;
+package me.thomasrba.minecoinsplayersapi.databasemanager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,13 +12,13 @@ public class DataBaseConnection {
 
     public DataBaseConnection(DataBaseInformation dataBaseInformation) {
         this.dataBaseInformation = dataBaseInformation;
-        this.Connect();
+        this.connect();
     }
 
-    private void Connect(){
+    private void connect(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            this.connection = DriverManager.getConnection(this.dataBaseInformation.MakeURI(),
+            this.connection = DriverManager.getConnection(this.dataBaseInformation.makeURI(),
                     this.dataBaseInformation.getUser(), this.dataBaseInformation.getPass());
             Logger.getLogger("Minecraft").info("Succes to connect db");
         } catch (SQLException | ClassNotFoundException e ){
@@ -26,7 +26,7 @@ public class DataBaseConnection {
         }
     }
 
-    public void Close() throws SQLException {
+    public void close() throws SQLException {
         if (this.connection != null && !this.connection.isClosed()){
             this.connection.close();
         }
@@ -37,7 +37,7 @@ public class DataBaseConnection {
             return  this.connection;
         }
 
-        this.Connect();
+        this.connect();
         return this.connection;
     }
 }

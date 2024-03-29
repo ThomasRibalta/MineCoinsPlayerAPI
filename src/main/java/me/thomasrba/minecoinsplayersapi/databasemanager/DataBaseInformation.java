@@ -1,4 +1,4 @@
-package me.thomasrba.mineCoinsPlayersApi.DataBaseManager;
+package me.thomasrba.minecoinsplayersapi.databasemanager;
 
 public class DataBaseInformation {
     private String host;
@@ -15,7 +15,7 @@ public class DataBaseInformation {
         this.port = port;
     }
 
-    public String MakeURI(){
+    public String makeURI(){
         final StringBuilder sb = new StringBuilder();
 
         sb.append("jdbc:mysql://")

@@ -1,4 +1,4 @@
-package me.thomasrba.mineCoinsPlayersApi.DataBaseManager;
+package me.thomasrba.minecoinsplayersapi.databasemanager;
 
 
 import java.sql.SQLException;
@@ -12,7 +12,7 @@ public class DataBaseManagers {
 
     public void close() {
         try{
-            this.dataBaseConnection.Close();
+            this.dataBaseConnection.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
