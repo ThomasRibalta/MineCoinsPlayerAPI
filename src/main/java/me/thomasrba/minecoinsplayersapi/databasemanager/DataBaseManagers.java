@@ -41,7 +41,7 @@ public class DataBaseManagers {
             if (resultSet.next()) {
                 playerState.setMoney(resultSet.getInt(4));
                 playerState.setBoutiquePts(resultSet.getInt(5));
-                playerState.setGradeId(resultSet.getInt(3));
+                playerState.setRankId(resultSet.getInt(3));
             } else {
                 this.addUserDataBase(uuid);
             }
