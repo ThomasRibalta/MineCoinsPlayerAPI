@@ -15,7 +15,7 @@ public class QuitEvent implements Listener {
 
     @EventHandler
     public void playerQuitEvent(PlayerQuitEvent e){
-        this.mineCoinsPlayersAPI.playerManagers.playerStates.get(e.getPlayer().getUniqueId()).saveSQLInformation(e.getPlayer().getUniqueId());
+        this.mineCoinsPlayersAPI.playerManagers.savePlayerState(e.getPlayer().getUniqueId());
         this.mineCoinsPlayersAPI.playerManagers.removePlayerState(e.getPlayer().getUniqueId());
     }
 

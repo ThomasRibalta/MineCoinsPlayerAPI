@@ -27,43 +27,11 @@ public class PlayerState {
         this.uuid = uuid;
         this.psuedo = p.getName();
         this.player = p;
+        this.gradeId = 0;
+        this.money = 0;
+        this.boutiquePts = 0;
         this.permissionAttachment = this.player.addAttachment(this.main);
-        this.getSQLInformation(uuid);
-        this.addPlayerPermission(PlayerRank.getRankMap(this.gradeId).getGradePermissions());
-
-
-    }
-
-    private void getSQLInformation(UUID uuid){
-        try {
-            Connection connection = this.main.getDataBaseManagers().getDataBaseConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT money, grade_id, boutique_pts FROM Players WHERE UUID = ?");
-            preparedStatement.setString(1, uuid.toString());
-            ResultSet resultSet  = preparedStatement.executeQuery();
-            if (resultSet.next()){
-                this.money = resultSet.getInt(1);
-                this.gradeId = resultSet.getInt(2);
-                this.boutiquePts = resultSet.getInt(3);
-            }else{
-            }
-
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-
-    public void saveSQLInformation(UUID uuid){
-        try {
-            Connection connection = this.main.getDataBaseManagers().getDataBaseConnection().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Players SET money = ?, grade_id = ?, boutique_pts = ? WHERE uuid = ?");
-            preparedStatement.setInt(1, this.money);
-            preparedStatement.setInt(2, this.gradeId);
-            preparedStatement.setInt(3, this.boutiquePts);
-            preparedStatement.setString(4, uuid.toString());preparedStatement.executeUpdate();
-            preparedStatement.close();
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+        addPlayerPermission(PlayerRank.getRankMap(this.gradeId).getGradePermissions());
     }
 
     public void addPlayerPermission(List<String> gradePermission){
@@ -102,6 +70,14 @@ public class PlayerState {
 
     public int getBoutiquePts() {
         return this.boutiquePts;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void setBoutiquePts(int boutiquePts) {
+        this.boutiquePts = boutiquePts;
     }
 
     public void setGradeId(int gradeId) {

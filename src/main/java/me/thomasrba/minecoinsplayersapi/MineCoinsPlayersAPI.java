@@ -13,8 +13,6 @@ import java.util.Objects;
 public class MineCoinsPlayersAPI extends JavaPlugin {
 
     private MineCoinsPlayersAPI mineCoinsPlayersAPI;
-
-    private DataBaseManagers dataBaseManagers;
     public PlayerManagers playerManagers;
 
     public MineCoinsPlayersAPI getMineCoinsPlayersAPI() {
@@ -24,9 +22,8 @@ public class MineCoinsPlayersAPI extends JavaPlugin {
     @Override
     public void onEnable() {
         this.mineCoinsPlayersAPI = this;
-        this.dataBaseManagers = new DataBaseManagers();
-        new ListenersManager(this).registerListener();
         this.playerManagers = new PlayerManagers(this);
+        new ListenersManager(this).registerListener();
 
         Objects.requireNonNull(getCommand("getStates")).setExecutor(new GetStates(this));
         Objects.requireNonNull(getCommand("setRank")).setExecutor(new SetRank(this));
@@ -34,10 +31,6 @@ public class MineCoinsPlayersAPI extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        this.dataBaseManagers.close();
-    }
 
-    public DataBaseManagers getDataBaseManagers() {
-        return dataBaseManagers;
     }
 }

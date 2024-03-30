@@ -27,7 +27,7 @@ public class SetRank implements CommandExecutor {
         if (player == null){
             return false;
         }
-        this.mineCoinsPlayersAPI.playerManagers.playerStates.get(player.getUniqueId()).setGradeId(Integer.parseInt(strings[1]));
+        this.mineCoinsPlayersAPI.playerManagers.getPlayerState(player.getUniqueId()).setGradeId(Integer.parseInt(strings[1]));
         return true;
     }
 }

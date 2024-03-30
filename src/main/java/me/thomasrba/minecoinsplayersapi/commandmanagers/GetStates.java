@@ -14,7 +14,7 @@ public class GetStates implements CommandExecutor {
     }
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, java.lang.String s, java.lang.String[] strings) {
-        for (PlayerState playerState: this.mineCoinsPlayersAPI.playerManagers.playerStates.values()){
+        for (PlayerState playerState: this.mineCoinsPlayersAPI.playerManagers.getPlayerStates().values()){
             commandSender.sendMessage(String.valueOf(playerState.getUuid()));
             commandSender.sendMessage(String.valueOf(playerState.getPsuedo()));
             commandSender.sendMessage(String.valueOf(playerState.getGradeId()));
