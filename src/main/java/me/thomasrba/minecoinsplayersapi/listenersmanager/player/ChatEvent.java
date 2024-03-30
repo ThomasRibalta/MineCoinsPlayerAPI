@@ -21,7 +21,7 @@ public class ChatEvent implements Listener {
     public void onChatEvent(AsyncPlayerChatEvent ev){
         Player player = ev.getPlayer();
         UUID uuid = player.getUniqueId();
-        String prefix = PlayerRank.getRankMap(this.mineCoinsPlayersAPI.playerManagers.getPlayerState(uuid).getGradeId()).getPrefix();
+        String prefix = PlayerRank.getRankMap(this.mineCoinsPlayersAPI.playerManagers.getPlayerState(uuid).getRankId()).getPrefix();
         ev.setFormat(prefix + " " + player.getName() + " §7»§f " + ev.getMessage());
 
     }

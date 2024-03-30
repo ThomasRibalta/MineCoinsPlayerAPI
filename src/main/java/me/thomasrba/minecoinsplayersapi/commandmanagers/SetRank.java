@@ -1,7 +1,6 @@
 package me.thomasrba.minecoinsplayersapi.commandmanagers;
 
 import me.thomasrba.minecoinsplayersapi.MineCoinsPlayersAPI;
-import me.thomasrba.minecoinsplayersapi.playermanager.PlayerState;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;

@@ -2,9 +2,8 @@ package me.thomasrba.minecoinsplayersapi.databasemanager;
 
 
 import me.thomasrba.minecoinsplayersapi.MineCoinsPlayersAPI;
-import me.thomasrba.minecoinsplayersapi.playermanager.PlayerState;
+import me.thomasrba.minecoinsplayersapi.playermanager.PlayerGame;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,9 +30,9 @@ public class DataBaseManagers {
 
     }
 
-    public PlayerState getPlayer(UUID uuid) {
+    public PlayerGame getPlayer(UUID uuid) {
         final DataBaseConnection dataBaseConnection = this.dataBaseConnection;
-        PlayerState playerState = new PlayerState(this.mineCoinsPlayersAPI, uuid, Objects.requireNonNull(Bukkit.getPlayer(uuid)));
+        PlayerGame playerState = new PlayerGame(this.mineCoinsPlayersAPI, uuid, Objects.requireNonNull(Bukkit.getPlayer(uuid)));
         try {
             final Connection connection = dataBaseConnection.getConnection();
             final PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Players WHERE uuid = ?");
@@ -52,7 +51,7 @@ public class DataBaseManagers {
         return playerState;
     }
 
-    public void savePlayer(PlayerState playerState) {
+    public void savePlayer(PlayerGame playerState) {
         final DataBaseConnection dataBaseConnection = this.dataBaseConnection;
         final UUID uuid = playerState.getUuid();
         try {

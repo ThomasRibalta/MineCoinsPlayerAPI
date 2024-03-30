@@ -6,7 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.UUID;
 
 public class PlayerManagers {
@@ -16,7 +15,7 @@ public class PlayerManagers {
 
     private final DataBaseManagers dataBaseManagers;
 
-    private final HashMap<UUID, PlayerState> playerStates = new HashMap<>();
+    private final HashMap<UUID, PlayerGame> playerStates = new HashMap<>();
 
     public PlayerManagers(MineCoinsPlayersAPI main) {
         this.mineCoinsPlayersAPI = main;
@@ -43,12 +42,12 @@ public class PlayerManagers {
         }
     }
 
-    public HashMap<UUID, PlayerState> getPlayerStates() {
+    public HashMap<UUID, PlayerGame> getPlayerStates() {
         return playerStates;
     }
 
-    public PlayerState getPlayerState(UUID uuid) {
-        PlayerState playerState = this.playerStates.get(uuid);
+    public PlayerGame getPlayerState(UUID uuid) {
+        PlayerGame playerState = this.playerStates.get(uuid);
         return playerState;
     }
 }
