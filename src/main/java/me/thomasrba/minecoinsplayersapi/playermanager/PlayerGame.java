@@ -23,7 +23,7 @@ public class PlayerGame {
         this.uuid = uuid;
         this.psuedo = p.getName();
         this.player = p;
-        this.rankId = 0;
+        this.rankId = 1;
         this.money = 0;
         this.boutiquePts = 0;
         this.permissionAttachment = this.player.addAttachment(this.main);

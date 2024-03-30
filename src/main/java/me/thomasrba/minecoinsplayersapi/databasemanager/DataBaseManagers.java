@@ -57,7 +57,7 @@ public class DataBaseManagers {
         try {
             final Connection connection = dataBaseConnection.getConnection();
             final PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Players SET grade_id = ?, money = ?, boutique_pts = ? WHERE uuid = ?");
-            preparedStatement.setInt(1, playerState.getGradeId());
+            preparedStatement.setInt(1, playerState.getRankId());
             preparedStatement.setInt(1, playerState.getMoney());
             preparedStatement.setInt(1, playerState.getBoutiquePts());
             preparedStatement.setString(1, uuid.toString());

@@ -28,5 +28,6 @@ public class JoinEvent implements Listener {
         final Player player = ev.getPlayer();
         final UUID uuid = player.getUniqueId();
         this.mineCoinsPlayersAPI.playerManagers.addPlayerState(uuid);
+        player.recalculatePermissions();
     }
 }
