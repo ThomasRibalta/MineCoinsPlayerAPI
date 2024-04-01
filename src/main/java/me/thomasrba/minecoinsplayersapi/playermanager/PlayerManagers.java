@@ -24,7 +24,7 @@ public class PlayerManagers {
     }
 
     public void addPlayerState(UUID uuid){
-        playerStates.put(uuid, this.dataBaseManagers.getPlayer(uuid));
+        playerStates.put(uuid, dataBaseManagers.getPlayer(uuid));
     }
 
     public void savePlayerState(UUID uuid){
@@ -47,7 +47,7 @@ public class PlayerManagers {
     }
 
     public PlayerGame getPlayerState(UUID uuid) {
-        PlayerGame playerState = this.playerStates.get(uuid);
-        return playerState;
+        PlayerGame playerGame = this.playerStates.get(uuid);
+        return playerGame;
     }
 }

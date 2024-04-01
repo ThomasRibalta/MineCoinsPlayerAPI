@@ -11,7 +11,7 @@ public enum PlayerRank {
     Youtubeurs(4, "§c[Youtubeur]", List.of("test.test")),
     Moderateur(6, "§2[Moderateur]", List.of("test.test")),
     Builder(5, "§6[Builder]", List.of("test.test")),
-    Admin(7,"§4[Administrateur]", List.of());
+    Admin(7,"§4[Administrateur]", List.of("test.test"));
 
     private final int gradeId;
     private final String prefix;

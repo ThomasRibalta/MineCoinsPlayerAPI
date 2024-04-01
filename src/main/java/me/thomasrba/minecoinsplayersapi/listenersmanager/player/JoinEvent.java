@@ -2,11 +2,14 @@ package me.thomasrba.minecoinsplayersapi.listenersmanager.player;
 
 import me.thomasrba.minecoinsplayersapi.MineCoinsPlayersAPI;
 import me.thomasrba.minecoinsplayersapi.databasemanager.DataBaseConnection;
+import me.thomasrba.minecoinsplayersapi.playermanager.PlayerRank;
+import me.thomasrba.minecoinsplayersapi.utils.Board;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.permissions.PermissionAttachment;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,6 +31,8 @@ public class JoinEvent implements Listener {
         final Player player = ev.getPlayer();
         final UUID uuid = player.getUniqueId();
         this.mineCoinsPlayersAPI.playerManagers.addPlayerState(uuid);
-        player.recalculatePermissions();
+        String prefix = PlayerRank.getRankMap(this.mineCoinsPlayersAPI.playerManagers.getPlayerState(uuid).getRankId()).getPrefix();
+        player.updateCommands();
+        player.sendMessage("test");
     }
 }

@@ -32,23 +32,23 @@ public class DataBaseManagers {
 
     public PlayerGame getPlayer(UUID uuid) {
         final DataBaseConnection dataBaseConnection = this.dataBaseConnection;
-        PlayerGame playerState = new PlayerGame(this.mineCoinsPlayersAPI, uuid, Objects.requireNonNull(Bukkit.getPlayer(uuid)));
+        PlayerGame playerGame = new PlayerGame(this.mineCoinsPlayersAPI, uuid, Objects.requireNonNull(Bukkit.getPlayer(uuid)));
         try {
             final Connection connection = dataBaseConnection.getConnection();
             final PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Players WHERE uuid = ?");
             preparedStatement.setString(1, uuid.toString());
             final ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                playerState.setMoney(resultSet.getInt(4));
-                playerState.setBoutiquePts(resultSet.getInt(5));
-                playerState.setRankId(resultSet.getInt(3));
+                playerGame.setMoney(resultSet.getInt(4));
+                playerGame.setBoutiquePts(resultSet.getInt(5));
+                playerGame.setRankId(resultSet.getInt(3));
             } else {
                 this.addUserDataBase(uuid);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return playerState;
+        return playerGame;
     }
 
     public void savePlayer(PlayerGame playerState) {
@@ -58,9 +58,9 @@ public class DataBaseManagers {
             final Connection connection = dataBaseConnection.getConnection();
             final PreparedStatement preparedStatement = connection.prepareStatement("UPDATE Players SET grade_id = ?, money = ?, boutique_pts = ? WHERE uuid = ?");
             preparedStatement.setInt(1, playerState.getRankId());
-            preparedStatement.setInt(1, playerState.getMoney());
-            preparedStatement.setInt(1, playerState.getBoutiquePts());
-            preparedStatement.setString(1, uuid.toString());
+            preparedStatement.setInt(2, playerState.getMoney());
+            preparedStatement.setInt(3, playerState.getBoutiquePts());
+            preparedStatement.setString(4, uuid.toString());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

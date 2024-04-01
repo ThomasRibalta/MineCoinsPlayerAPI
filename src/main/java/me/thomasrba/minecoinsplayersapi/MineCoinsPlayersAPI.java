@@ -6,8 +6,12 @@ import me.thomasrba.minecoinsplayersapi.commandmanagers.GetStates;
 import me.thomasrba.minecoinsplayersapi.listenersmanager.ListenersManager;
 import me.thomasrba.minecoinsplayersapi.playermanager.PlayerManagers;
 import me.thomasrba.minecoinsplayersapi.playermanager.PlayerRank;
+import me.thomasrba.minecoinsplayersapi.utils.Board;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
+import javax.swing.*;
 import java.util.Objects;
 
 public class MineCoinsPlayersAPI extends JavaPlugin {
@@ -15,22 +19,25 @@ public class MineCoinsPlayersAPI extends JavaPlugin {
     private MineCoinsPlayersAPI mineCoinsPlayersAPI;
     public PlayerManagers playerManagers;
 
-    public MineCoinsPlayersAPI getMineCoinsPlayersAPI() {
-        return this.mineCoinsPlayersAPI;
-    }
-
+    private BukkitTask task1;
     @Override
     public void onEnable() {
         this.mineCoinsPlayersAPI = this;
+        getCommand("getstates").setExecutor(new GetStates(this));
+        getCommand("setrank").setExecutor(new SetRank(this));
+        getCommand("setrank").setTabCompleter(new SetRank(this));
         this.playerManagers = new PlayerManagers(this);
         new ListenersManager(this).registerListener();
 
-        Objects.requireNonNull(getCommand("getStates")).setExecutor(new GetStates(this));
-        Objects.requireNonNull(getCommand("setRank")).setExecutor(new SetRank(this));
+        task1 = getServer().getScheduler().runTaskTimer(this, Board.getInstance(), 20, 1);
     }
 
     @Override
     public void onDisable() {
 
+    }
+
+    public static MineCoinsPlayersAPI getInstance() {
+        return getPlugin(MineCoinsPlayersAPI.class);
     }
 }

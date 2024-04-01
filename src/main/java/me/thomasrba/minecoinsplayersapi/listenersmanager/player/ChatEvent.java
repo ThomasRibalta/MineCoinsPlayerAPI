@@ -23,6 +23,5 @@ public class ChatEvent implements Listener {
         UUID uuid = player.getUniqueId();
         String prefix = PlayerRank.getRankMap(this.mineCoinsPlayersAPI.playerManagers.getPlayerState(uuid).getRankId()).getPrefix();
         ev.setFormat(prefix + " " + player.getName() + " §7»§f " + ev.getMessage());
-
     }
 }

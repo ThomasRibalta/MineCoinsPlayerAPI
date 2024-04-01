@@ -32,16 +32,18 @@ public class PlayerGame {
 
     public void addPlayerPermission(List<String> gradePermission){
         for (String permission : gradePermission) {
-            System.out.println(permission);
             this.permissionAttachment.setPermission(permission, true);
         }
+        player.recalculatePermissions();
+        player.updateCommands();
     }
 
     public void removePlayerPermission(List<String> gradePermission){
         for (String permission : gradePermission) {
-            System.out.println(permission);
             this.permissionAttachment.unsetPermission(permission);
         }
+        player.recalculatePermissions();
+        player.updateCommands();
     }
 
     public UUID getUuid() {
@@ -76,7 +78,7 @@ public class PlayerGame {
         this.boutiquePts = boutiquePts;
     }
 
-    public void setGradeId(int gradeId) {
+    public void setRankId(int gradeId) {
         this.removePlayerPermission(PlayerRank.getRankMap(this.rankId).getGradePermissions());
         this.rankId = gradeId;
         this.addPlayerPermission(PlayerRank.getRankMap(this.rankId).getGradePermissions());

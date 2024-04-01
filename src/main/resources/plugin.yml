@@ -3,11 +3,11 @@ main: me.thomasrba.minecoinsplayersapi.MineCoinsPlayersAPI
 version: 1.0
 api-version: 1.20
 commands:
-  getStates:
+  getstates:
     description: test
     permission-message: test
     permission: test.test
-  setRank:
+  setrank:
     description: set le grade
     permission-message: Pas le droit
     permission: admin.setrank
