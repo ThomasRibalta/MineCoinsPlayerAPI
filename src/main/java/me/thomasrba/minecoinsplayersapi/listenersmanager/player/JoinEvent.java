@@ -33,6 +33,5 @@ public class JoinEvent implements Listener {
         this.mineCoinsPlayersAPI.playerManagers.addPlayerState(uuid);
         String prefix = PlayerRank.getRankMap(this.mineCoinsPlayersAPI.playerManagers.getPlayerState(uuid).getRankId()).getPrefix();
         player.updateCommands();
-        player.sendMessage("test");
     }
 }

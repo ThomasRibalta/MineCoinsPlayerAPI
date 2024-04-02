@@ -1,10 +1,14 @@
 package me.thomasrba.minecoinsplayersapi.playermanager;
 
+import com.google.common.base.Strings;
 import me.thomasrba.minecoinsplayersapi.MineCoinsPlayersAPI;
 import org.bukkit.entity.Player;
+import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionAttachment;
+import org.bukkit.permissions.PermissionAttachmentInfo;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public class PlayerGame {
@@ -27,6 +31,14 @@ public class PlayerGame {
         this.money = 0;
         this.boutiquePts = 0;
         this.permissionAttachment = this.player.addAttachment(this.main);
+
+        // Retirer toutes les permissions par défaut
+        for (String s : permissionAttachment.getPermissions().keySet()) {
+            player.sendMessage(s);
+            permissionAttachment.unsetPermission(s);
+        }
+        player.recalculatePermissions();
+        player.updateCommands();
         addPlayerPermission(PlayerRank.getRankMap(this.rankId).getGradePermissions());
     }
 
@@ -40,6 +52,7 @@ public class PlayerGame {
 
     public void removePlayerPermission(List<String> gradePermission){
         for (String permission : gradePermission) {
+            player.sendMessage(permission);
             this.permissionAttachment.unsetPermission(permission);
         }
         player.recalculatePermissions();

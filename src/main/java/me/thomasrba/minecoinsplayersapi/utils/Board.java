@@ -31,8 +31,6 @@ public final class Board implements Runnable {
 
     private void createNewScoreboard(Player player) {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-
-        UUID uuid = player.getUniqueId();
         Objective objective = scoreboard.registerNewObjective(MineCoinsPlayersAPI.getInstance().getName(), "youhou");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         objective.setDisplayName("§6§lMineCoins§f§lMC");
