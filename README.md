@@ -1,4 +1,4 @@
-# Minecraft Rank Management API - README
+# Minecraft MineCoins Player Api
 
 ## Description
 This Minecraft API has been developed to manage player ranks without relying on existing plugins. It handles permissions, role display on the scoreboard, and role display in join and leave messages. There is a `setrank` command that uses numbers to assign roles to players. All modifications made to players are not immediately sent to the database to avoid excessive requests; instead, a map is used to store changes temporarily.
